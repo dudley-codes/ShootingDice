@@ -32,12 +32,19 @@ namespace ShootingDice
 
       Console.WriteLine("-------------------");
 
-      SmackTalkingPlayer chad = new SmackTalkingPlayer();
-      chad.Name = "Chad";
-      chad.Taunt = "You suck!!!";
+      Player smackTalker = new SmackTalkingPlayer();
+      smackTalker.Name = "Karen";
+      // smackTalker.Taunt = "You suck!!!";
+
+      Player alwaysHigher = new OneHigherPlayer();
+      alwaysHigher.Name = "Snoop";
+
+      alwaysHigher.Play(smackTalker);
+
+      Console.WriteLine("-------------------");
 
       List<Player> players = new List<Player>() {
-                player1, player2, player3, large, chad
+                player1, player2, player3, large, smackTalker, alwaysHigher
             };
 
       PlayMany(players);
