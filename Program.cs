@@ -32,11 +32,11 @@ namespace ShootingDice
 
       Console.WriteLine("-------------------");
 
-      Player smackTalker = new SmackTalkingPlayer();
+      SmackTalkingPlayer smackTalker = new SmackTalkingPlayer();
       smackTalker.Name = "Karen";
-      // smackTalker.Taunt = "You suck!!!";
+      smackTalker.Taunt = "You suck!!!";
 
-      Player alwaysHigher = new OneHigherPlayer();
+      OneHigherPlayer alwaysHigher = new OneHigherPlayer();
       alwaysHigher.Name = "Snoop";
 
       alwaysHigher.Play(smackTalker);
@@ -77,9 +77,15 @@ namespace ShootingDice
         Player player1 = shuffledPlayers[i];
         Player player2 = shuffledPlayers[i + 1];
 
-        player1.Play(player2);
-        player1.Phrase();
-        player2.Phrase();
+        switch (player2.ToString())
+        {
+          case "ShootingDice.OneHigherPlayer":
+            player2.Play(player1);
+            break;
+          default:
+            player1.Play(player2);
+            break;
+        }
       }
     }
   }
