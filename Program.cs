@@ -34,7 +34,6 @@ namespace ShootingDice
 
       SmackTalkingPlayer smackTalker = new SmackTalkingPlayer();
       smackTalker.Name = "Karen";
-      smackTalker.Taunt = "You suck!!!";
 
       OneHigherPlayer alwaysHigher = new OneHigherPlayer();
       alwaysHigher.Name = "Snoop";
@@ -43,8 +42,41 @@ namespace ShootingDice
 
       Console.WriteLine("-------------------");
 
+      smackTalker.Play(alwaysHigher);
+
+      Console.WriteLine("-------------------");
+      HumanPlayer human = new HumanPlayer();
+      human.Name = "Mr Notarobot";
+
+      human.Play(alwaysHigher);
+
+      Console.WriteLine("-------------------");
+      CreativeSmackTalkingPlayer creative = new CreativeSmackTalkingPlayer();
+      creative.Name = "Smack Talker2";
+
+      creative.Play(large);
+
+      Console.WriteLine("-------------------");
+
+      SoreLoserPlayer donald = new SoreLoserPlayer();
+      donald.Name = "Donald";
+
+      donald.Play(player1);
+      Console.WriteLine("-------------------");
+
+      UpperHalfPlayer upper = new UpperHalfPlayer();
+      upper.Name = "Upper Duder";
+
+      upper.Play(player1);
+
+      Console.WriteLine("-------------------");
+      SoreLoserUpperHalfPlayer donJr = new SoreLoserUpperHalfPlayer();
+      donJr.Name = "Donald, Jr";
+      donJr.Play(donald);
+
+      Console.WriteLine("-------------------");
       List<Player> players = new List<Player>() {
-                player1, player2, player3, large, smackTalker, alwaysHigher
+                player1, player2, player3, large, smackTalker, alwaysHigher, human
             };
 
       PlayMany(players);
@@ -80,6 +112,9 @@ namespace ShootingDice
         switch (player2.ToString())
         {
           case "ShootingDice.OneHigherPlayer":
+            player2.Play(player1);
+            break;
+          case "ShootingDice.HumanPlayer":
             player2.Play(player1);
             break;
           default:
